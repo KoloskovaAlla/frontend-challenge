@@ -3,19 +3,21 @@ import { useState, useRef } from 'react';
 import { useEffect } from 'react';
 import { ReactComponent as IconEmptyLike } from './assets/favorite_border.svg'
 import { ReactComponent as IconClickedLike } from './assets/favorite.svg'
-import { useFavoriteCats } from '../../hooks';
+import { useFavoriteCats, useFavorite } from '../../hooks';
 import { useDispatch } from 'react-redux';
 
 export const Cat = ({ cat }) => {
   const [isHover, setIsHover] = useState(false);
   const [isLikeVisible, setIsLikeVisible] = useState(false);
   const [isLikeClicked, setIsLikeClicked] = useState(false);
+  const { isFavorite, setIsFavorite } = useFavorite();
   const [isHeartHovered, setIsHeartHovered] = useState(false);
 
   const dispatch = useDispatch();
   const likeButtonRef = useRef(null);
   const catRef = useRef(null);
   const { favoriteCats, setFavoriteCats } = useFavoriteCats();
+  
 
 
   const handleCatMouseEnter = () => {
