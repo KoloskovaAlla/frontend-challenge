@@ -1,7 +1,7 @@
 import classes from './CatsPage.module.scss';
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { useCatsPage, useCurrentPage } from '../../hooks';
+import { useCatsPage, useCurrentPage, useFavorite } from '../../hooks';
 import { Cat } from '../../components/Cat';
 
 export const CatsPage = () => {

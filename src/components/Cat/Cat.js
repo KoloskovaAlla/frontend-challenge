@@ -7,7 +7,7 @@ import { useFavoriteCats, useFavorite } from '../../hooks';
 import { useDispatch } from 'react-redux';
 
 export const Cat = ({ cat }) => {
-  const [isHover, setIsHover] = useState(false);
+  const [isCatHover, setIsCatHover] = useState(false);
   const [isLikeVisible, setIsLikeVisible] = useState(false);
   const [isLikeClicked, setIsLikeClicked] = useState(false);
   const { isFavorite, setIsFavorite } = useFavorite();
@@ -17,11 +17,14 @@ export const Cat = ({ cat }) => {
   const likeButtonRef = useRef(null);
   const catRef = useRef(null);
   const { favoriteCats, setFavoriteCats } = useFavoriteCats();
-  
+
+  // useEffect(() => {
+  //   console.log(isCatHover);
+  // }, []);
 
 
   const handleCatMouseEnter = () => {
-    setIsHover(true);
+    setIsCatHover(true);
     setIsLikeVisible(true);
     // catRef.current.style.transform = 'scale(1.2)';
     catRef.current.style.scale = '1.2';
@@ -30,7 +33,7 @@ export const Cat = ({ cat }) => {
   };
 
   const handleCatMouseLeave = () => {
-    setIsHover(false);
+    setIsCatHover(false);
     setIsLikeVisible(false);
     catRef.current.style.scale = '1';
     catRef.current.style.transitionProperty = 'all';
@@ -55,12 +58,12 @@ export const Cat = ({ cat }) => {
 
   const handleLikeClick = () => {
     if (favoriteCats.includes(cat)) {
-      setIsLikeClicked(false);
-      removeFromFavoriteCats(cat);     
+      dispatch(setIsFavorite(false));
+      removeFromFavoriteCats(cat);
     }
     else {
       addToFavoriteCats(cat);
-      setIsLikeClicked(true);     
+      dispatch(setIsFavorite(true));
     }
   };
 
@@ -78,7 +81,7 @@ export const Cat = ({ cat }) => {
           alt={'здесь был кот'}
         />
       </div>
-      {isHover && isLikeVisible && !isLikeClicked && (
+      {isCatHover && isLikeVisible && !isFavorite && (
         <IconEmptyLike
           className={classes.like}
           ref={likeButtonRef}
@@ -87,7 +90,7 @@ export const Cat = ({ cat }) => {
           onMouseLeave={handleLikeMouseLeave}
         />
       )}
-      {isLikeVisible && (isLikeClicked || isHeartHovered) && (
+      {isLikeVisible && (isFavorite || isHeartHovered) && (
         <IconClickedLike
           className={classes.like}
           // ref={likeButtonRef}
