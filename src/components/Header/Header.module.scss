@@ -113,10 +113,11 @@
   }
 
   a {
-    display: block;
-    width: 100%;
-    padding: 25px 15px;
     display: flex;
+    align-items: center;
+    height: 100%;
+
+    /* Растягиваем ссылку по горизонтали */
 
 
     @media (min-width: $breakpoint_lg) {
@@ -125,6 +126,10 @@
   }
 }
 
+
+
 a:global.active {
-  border-bottom: 2px solid #aaa;
+  background: rgb(30, 136, 229); // для ховера;
+
+  transform: scale(1.05);
 }
