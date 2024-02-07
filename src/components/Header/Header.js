@@ -16,7 +16,7 @@ export const Header = () => {
           key={1}
         >
           <NavLink
-            // className={classes.button}
+            className={classes.link}
             // onClick={handleAllCatsClick}
             to={`/`}
           >
@@ -28,7 +28,7 @@ export const Header = () => {
           key={2}
         >
           <NavLink
-            // className={classes.button}
+            className={classes.link}
             // onClick={handleFavoriteCatsClick}
             to={`/favoriteCats`}
           >
