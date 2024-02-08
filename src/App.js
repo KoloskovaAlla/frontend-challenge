@@ -1,4 +1,3 @@
-// import { Routes, Route } from 'react-router-dom';
 import './scss/settings/index.scss';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { CatsPage, FavoriteCatsPage } from './pages';

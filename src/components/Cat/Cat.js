@@ -1,32 +1,23 @@
 import classes from './Cat.module.scss';
 import { useState, useRef } from 'react';
-import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { useFavoriteCats, useFavorite } from '../../hooks';
 import { ReactComponent as IconEmptyLike } from './assets/favorite_border.svg'
 import { ReactComponent as IconClickedLike } from './assets/favorite.svg'
-import { useFavoriteCats, useFavorite } from '../../hooks';
-import { useDispatch } from 'react-redux';
 
 export const Cat = ({ cat }) => {
   const [isCatHover, setIsCatHover] = useState(false);
   const [isLikeVisible, setIsLikeVisible] = useState(false);
-  const [isLikeClicked, setIsLikeClicked] = useState(false);
-  const { isFavorite, setIsFavorite } = useFavorite();
   const [isHeartHovered, setIsHeartHovered] = useState(false);
-
-  const dispatch = useDispatch();
   const likeButtonRef = useRef(null);
   const catRef = useRef(null);
+  const dispatch = useDispatch();
+  const { isFavorite, setIsFavorite } = useFavorite();
   const { favoriteCats, setFavoriteCats } = useFavoriteCats();
-
-  // useEffect(() => {
-  //   console.log(isCatHover);
-  // }, []);
-
 
   const handleCatMouseEnter = () => {
     setIsCatHover(true);
     setIsLikeVisible(true);
-    // catRef.current.style.transform = 'scale(1.2)';
     catRef.current.style.scale = '1.2';
     catRef.current.style.transitionProperty = 'all';
     catRef.current.style.transitionDuration = '1s';
@@ -93,7 +84,6 @@ export const Cat = ({ cat }) => {
       {isLikeVisible && (isFavorite || isHeartHovered) && (
         <IconClickedLike
           className={classes.like}
-          // ref={likeButtonRef}
           onClick={handleLikeClick}
           onMouseEnter={handleLikeMouseEnter}
           onMouseLeave={handleLikeMouseLeave}
