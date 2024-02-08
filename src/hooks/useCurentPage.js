@@ -6,7 +6,6 @@ const getState = (store) => store.currentPageReducer;
 
 export const useCurrentPage = () => {
   const { currentPage } = useSelector(getState);
-  // console.log(setCurrentPage)
 
   return {
     currentPage,

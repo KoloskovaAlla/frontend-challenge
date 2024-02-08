@@ -8,7 +8,7 @@
   position: relative;
   overflow: hidden;
   width: 100%;
-  aspect-ratio: 10/6;
+  aspect-ratio: 1/1;
 
   img {
     object-fit: cover;
@@ -23,6 +23,5 @@
   height: 40px;
   width: 40px;
   bottom: 15px;
-  /* Перемещаем вниз до нижнего края .image */
   right: 10px;
 }

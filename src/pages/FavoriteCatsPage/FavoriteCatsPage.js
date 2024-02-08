@@ -2,7 +2,6 @@ import classes from './FavoriteCats.module.scss';
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { useCurrentPage, useFavoriteCats } from '../../hooks';
-// import { Cat } from './components';
 import { Cat } from '../../components';
 
 export const FavoriteCatsPage = () => {
