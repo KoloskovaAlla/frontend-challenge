@@ -22,6 +22,7 @@ export const Header = () => {
         >
           <NavLink
             className={classes.link}
+            activeClassName={classes.active}
             to={`/favoriteCats`}
           >
             любимые котики
